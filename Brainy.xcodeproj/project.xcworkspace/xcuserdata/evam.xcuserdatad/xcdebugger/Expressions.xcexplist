@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TriviaManager.fetchTrivia():TriviaManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "response.statusCode">
+            </PersistentString>
+            <PersistentString
+               value = "(response as? HTTPURLResponse)?.statusCode == 200">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TriviaManagerHardLevel.fetchTrivia():TriviaManagerHardLevel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TriviaManagerMediumLevel.fetchTrivia():TriviaManagerMediumLevel.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
