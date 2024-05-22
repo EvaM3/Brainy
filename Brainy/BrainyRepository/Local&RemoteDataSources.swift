@@ -10,14 +10,7 @@ import SwiftUI
 
 
 class RemotedataSource {
-    func fetchTrivia(completion: @escaping ([Trivia.Result]?, Error?) -> Void) {
-        // Example implementation to fetch trivia from a remote source, for testing :-)
-        
-        let exampleResults = [
-            Trivia.Result(category: "General Knowledge", type: "multiple", difficulty: "easy", question: "Example question?", correctAnswer: "Correct", incorrectAnswers: ["Wrong1", "Wrong2", "Wrong3"])
-        ]
-        completion(exampleResults, nil)
-    }
+    
 }
 
 class LocalDataSource {

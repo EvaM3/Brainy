@@ -24,11 +24,12 @@ class AnswerRepository: DataRepository {
     func getAll() -> [Answer] {
         return answers
     }
+//     TODO:
     
-    func get(byId id: Int) -> Answer? {
-        return answers.first(where: { $0.answerId == id })
-    }
-    
+//    func get(byId id: Int) -> Answer? {
+//        return answers.first(where: { $0.answerId == id })
+//    }
+//    
     func add(_ answer: Answer) {
         answers.append(answer)
     }

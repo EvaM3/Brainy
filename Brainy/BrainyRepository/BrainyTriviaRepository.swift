@@ -10,6 +10,10 @@ import SwiftUI
 
 
 class TriviaRepository: DataRepository {
+    func getAll() -> [Trivia.Result] {
+        <#code#>
+    }
+    
     typealias T = Trivia.Result
     
     private let remote: RemoteDataSource
@@ -19,20 +23,20 @@ class TriviaRepository: DataRepository {
         self.remote = remote
         self.local = local
     }
-    
-    func getAll() -> [Trivia.Result] {
-        // Fetch trivias from the remote source and return
-        remote.fetchTrivia { [weak self] (remoteTrivias: [Trivia.Result]?, error: Error?) in
-            guard let self = self else { return }
-            if let remoteTrivias = remoteTrivias {
-                // Save remote response to local
-                self.local.addAll(remoteTrivias)
-            }
-        }
-        
-        // Return trivias from the local source
-        return local.getAll()
-    }
+    // TODO: 
+//    func getAll() -> [Trivia.Result] {
+//        // Fetch trivias from the remote source and return
+//        remote.fetchTrivia { [weak self] (remoteTrivias: [Trivia.Result]?, error: Error?) in
+//            guard let self = self else { return }
+//            if let remoteTrivias = remoteTrivias {
+//                // Save remote response to local
+//                self.local.addAll(remoteTrivias)
+//            }
+//        }
+//        
+//        // Return trivias from the local source
+//        return local.getAll()
+//    }
     
     func get(byId id: String) -> Trivia.Result? {
         // Fetch trivia from local and return
