@@ -5,45 +5,61 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct AnswerResponse: Decodable {
-    let answers: [Answer]
-}
+class RemoteTriviaRepository: DataRepository {
 
-class RemoteDataSource {
+  
+    typealias T = Trivia.Result
     
-    var error: Error?
+    private let apiURL =  "https://opentdb.com/api.php?amount=10" //API from TriviaManager
     
-    init(url: URL, completion: @escaping ([Trivia.Result]?, Error?) -> Void) {
-        fetchTriviaFromData(url: url, completion: completion)
-    }
-    // fetch trivia 
-    private func fetchTriviaFromData(url: URL, completion: @escaping ([Trivia.Result]?, Error?) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completion([], error)
+    //
+    
+    func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) {
+        guard let url = URL(string: apiURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
                 return
             }
             
-            if let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) {
-                do {
-                    let trivia = try JSONDecoder().decode(Trivia.self, from: data)
-                    completion(trivia.results, nil)
-                } catch {
-                    completion(nil, error)
-                }
-            } else {
-                completion(nil, NetworkError.invalidResponse)
+            guard let data = data else {
+                completion(.failure(NSError(domain: "No data received", code: -1, userInfo: nil)))
+                return
             }
-        }.resume()
+            
+            do {
+                let trivia = try JSONDecoder().decode(Trivia.self, from: data)
+                completion(.success(trivia.results))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        
+        task.resume()
     }
     
-    private enum NetworkError: Error {
-        case invalidResponse
+    func get(byId id: String, completion: @escaping (Result<Trivia.Result?, Error>) -> Void) {
+        getAll { result in
+            switch result {
+            case .success(let triviaItems):
+                let item = triviaItems.first { $0.id == id }
+                completion(.success(item))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func add(_ item: Trivia.Result, completion: @escaping (Result<Void, Error>) -> Void) {
+       
+        // Instead of sending to a remote server, we're simulating that by printing to the console
+        print("Adding trivia item: \(item)")
+        completion(.success(()))
     }
 }
-
-
-
-// //HTTP 401 = unauthorized
-// HTTP 429 = too many requests (your limit is one query every 5 seconds)
