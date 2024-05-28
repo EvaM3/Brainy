@@ -49,7 +49,7 @@ struct AnswerRow: View {
 struct AnswerRow_Previews: PreviewProvider {
     static var previews: some View {
 
-        AnswerRow(answer: Answer(answerId: 5, text: "Happy", isCorrect:  true))
+        AnswerRow(answer: Answer(answerId: "", text: "Happy", isCorrect:  true))
             .environmentObject(TriviaManager())
     }
 }

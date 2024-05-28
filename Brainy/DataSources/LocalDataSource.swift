@@ -8,13 +8,14 @@ import Foundation
 import SwiftUI
 
 
-class LocalTriviaRepository: DataRepository {
+class LocalDataSource: DataSource {
     typealias T = Trivia.Result
     
     
     private var triviaItems: [Trivia.Result] = []
     
     func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) {
+        // TODO: Fetch Trivia items from CoreData or SwiftData
         completion(.success(triviaItems))
     }
     
@@ -23,9 +24,6 @@ class LocalTriviaRepository: DataRepository {
         completion(.success(item))
     }
     
-    func add(_ item: Trivia.Result, completion: @escaping (Result<Void, Error>) -> Void) {
-        triviaItems.append(item)
-        completion(.success(()))
-    }
+
 }
 

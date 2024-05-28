@@ -51,7 +51,7 @@ struct MediumAnswerRow: View {
 struct MediumAnswerRow_Previews: PreviewProvider {
     static var previews: some View {
 
-        MediumAnswerRow(answer: Answer(answerId: 7, text: "Happy", isCorrect:  true))
+        MediumAnswerRow(answer: Answer(answerId: "", text: "Happy", isCorrect:  true))
             .environmentObject(TriviaManagerMediumLevel())
     }
 }

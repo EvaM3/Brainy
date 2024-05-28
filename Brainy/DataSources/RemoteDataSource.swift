@@ -7,16 +7,16 @@
 import Foundation
 import SwiftUI
 
-class RemoteTriviaRepository: DataRepository {
+class RemoteDataSource: DataSource {
 
   
     typealias T = Trivia.Result
     
     private let apiURL =  "https://opentdb.com/api.php?amount=10" //API from TriviaManager
     
-    //
     
-    func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) {
+    
+    func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) { // returns a list of trivia objects
         guard let url = URL(string: apiURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
@@ -44,6 +44,28 @@ class RemoteTriviaRepository: DataRepository {
         task.resume()
     }
     
+   
+//     func getAll() async throws -> [Trivia.Result] {
+//         guard let url = URL(string: apiURL) else {
+//             throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
+//         }
+//         
+//         let (data, response) = try await URLSession.shared.data(from: url)
+//         
+//         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
+//             let triviaResults = try JSONDecoder().decode([Trivia.Result].self, from: data)
+//             return triviaResults
+//         } else {
+//             throw NSError(domain: "Invalid response", code: -1, userInfo: nil)
+//             
+//         }
+//    
+//         
+//         do {
+//             let triviaResults = try await getAll()
+//         } catch {
+//             print("Error fetching trivia results: \(error)")
+//         }
     func get(byId id: String, completion: @escaping (Result<Trivia.Result?, Error>) -> Void) {
         getAll { result in
             switch result {
@@ -55,11 +77,5 @@ class RemoteTriviaRepository: DataRepository {
             }
         }
     }
-    
-    func add(_ item: Trivia.Result, completion: @escaping (Result<Void, Error>) -> Void) {
-       
-        // Instead of sending to a remote server, we're simulating that by printing to the console
-        print("Adding trivia item: \(item)")
-        completion(.success(()))
-    }
+
 }

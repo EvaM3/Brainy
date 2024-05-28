@@ -50,7 +50,7 @@ struct HardAnswerRow: View {
 
 struct HardAnswerRow_Previews: PreviewProvider {
     static var previews: some View {
-        HardAnswerRow(answer: Answer(answerId: 6, text: "Happy", isCorrect:  true))
+        HardAnswerRow(answer: Answer(answerId: "", text: "Happy", isCorrect:  true))
             .environmentObject(TriviaManagerMediumLevel())
     }
 }
