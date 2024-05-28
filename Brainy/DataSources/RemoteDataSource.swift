@@ -7,16 +7,11 @@
 import Foundation
 import SwiftUI
 
-class RemoteDataSource: DataSource {
 
-  
-    typealias T = Trivia.Result
-    
-    private let apiURL =  "https://opentdb.com/api.php?amount=10" //API from TriviaManager
-    
-    
-    
-    func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) { // returns a list of trivia objects
+class RemoteDataSource: DataSource {
+    private let apiURL = "https://opentdb.com/api.php?amount=10"
+
+    func getAll(completion: @escaping (Result<[Trivia], Error>) -> Void) { // returns a list of trivia objects
         guard let url = URL(string: apiURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
             return
@@ -34,8 +29,8 @@ class RemoteDataSource: DataSource {
             }
             
             do {
-                let trivia = try JSONDecoder().decode(Trivia.self, from: data)
-                completion(.success(trivia.results))
+                let triviaResult = try JSONDecoder().decode(Trivia.Result.self, from: data)
+                completion(.success(triviaResult.results))
             } catch {
                 completion(.failure(error))
             }
@@ -43,30 +38,8 @@ class RemoteDataSource: DataSource {
         
         task.resume()
     }
-    
-   
-//     func getAll() async throws -> [Trivia.Result] {
-//         guard let url = URL(string: apiURL) else {
-//             throw NSError(domain: "Invalid URL", code: -1, userInfo: nil)
-//         }
-//         
-//         let (data, response) = try await URLSession.shared.data(from: url)
-//         
-//         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
-//             let triviaResults = try JSONDecoder().decode([Trivia.Result].self, from: data)
-//             return triviaResults
-//         } else {
-//             throw NSError(domain: "Invalid response", code: -1, userInfo: nil)
-//             
-//         }
-//    
-//         
-//         do {
-//             let triviaResults = try await getAll()
-//         } catch {
-//             print("Error fetching trivia results: \(error)")
-//         }
-    func get(byId id: String, completion: @escaping (Result<Trivia.Result?, Error>) -> Void) {
+
+    func get(byId id: String, completion: @escaping (Result<Trivia?, Error>) -> Void) {
         getAll { result in
             switch result {
             case .success(let triviaItems):
@@ -77,5 +50,11 @@ class RemoteDataSource: DataSource {
             }
         }
     }
+}
 
 }
+
+
+
+
+

@@ -28,14 +28,16 @@ struct Trivia: Decodable, Identifiable {
     }
     
     var answers: [String] {
-        do {
-    // create an array containing correctAnswer and all valus of incorrectAnswers and shuffle the array
-            let allAnswers = correct + incorrects
-            
-            return allAnswers.shuffled()
-        } catch {
-            print("Error setting answers: \(error)")
-            return []
-        }
+        // Cleaned it from the do-catch block
+       var allAnswers = incorrectAnswers
+        allAnswers.append(correctAnswer)
+        
+        // Shuffled combined array
+        return allAnswers.shuffled()
+        
+        
     }
+    
+    
+    
 }

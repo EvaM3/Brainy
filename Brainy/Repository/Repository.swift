@@ -15,7 +15,6 @@ protocol Repository {
         func get() -> Trivia
         
     
-   // Using completion handlers for asynchronous operations 
 }
 
 
