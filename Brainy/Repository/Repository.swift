@@ -10,11 +10,9 @@ import SwiftUI
 
 protocol Repository {
 
-    
         func getAll() -> [Trivia]
         func get() -> Trivia
         
-    
 }
 
 

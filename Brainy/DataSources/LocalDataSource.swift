@@ -9,21 +9,31 @@ import SwiftUI
 
 
 class LocalDataSource: DataSource {
-    typealias T = Trivia.Result
+    private var triviaItems: [Trivia] = []
     
-    
-    private var triviaItems: [Trivia.Result] = []
-    
-    func getAll(completion: @escaping (Result<[Trivia.Result], Error>) -> Void) {
-        // TODO: Fetch Trivia items from CoreData or SwiftData
-        completion(.success(triviaItems))
+    // Fetch all trivia items
+    func getAll() async throws -> [Trivia] {
+        
+        return triviaItems
     }
     
-    func get(byId id: String, completion: @escaping (Result<Trivia.Result?, Error>) -> Void) {
-        let item = triviaItems.first { $0.id == id }
-        completion(.success(item))
+    // Fetch a trivia item by its ID
+    func get(byId id: String) async throws -> Trivia? {
+        
+        return triviaItems.first { $0.id == id }
     }
     
-
+    // Add trivia items to the local data source for testing purposes (when the time comes :-) )
+    func addTriviaItems(_ items: [Trivia]) {
+        triviaItems.append(contentsOf: items)
+    }
+    
+    // Protocol requirement
+    func get() async throws -> Trivia? {
+        // This method can be used to fetch a single Trivia item if needed
+        return nil
+    }
 }
+
+
 

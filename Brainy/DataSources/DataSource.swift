@@ -7,17 +7,20 @@
 
 import Foundation
 
+/*
+ 
+ Hi Prateek!
+ The remote and local datasources are done (or so I think). Please have a look. Next step: Trivia repository.
+  That part will be updated by tomorrow (cross fingers).
+   Have a great day!
+ 
+ */
 
-protocol DataSource {
-  /*
-   Hi Prateek!
-   Question: Shall I leave the dataSource protocol as it was, with completion handlers? Based on the book "Modern Concurrency" it is better (asynchronous), or do the async/await? 
-   Question: Clean up models, one core model: That's the Trivia. The Question struct is done, do I need to keep it like this?
-     Thanks for your help :-)
-   */
-    
-    func get() -> Trivia?
-    func getAll() -> [Trivia]
-}
 
-// associatedtype T
+  protocol DataSource {
+      
+      func get() async throws -> Trivia?
+      func getAll() async throws -> [Trivia]
+      
+ }
+
