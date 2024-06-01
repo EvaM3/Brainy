@@ -5,13 +5,4 @@
         <attribute name="isCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="TriviaEntity" representedClassName="TriviaEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="catergory" optional="YES" attributeType="String"/>
-        <attribute name="correctAnswer" optional="YES" attributeType="String"/>
-        <attribute name="difficulty" optional="YES" attributeType="String"/>
-        <attribute name="incorrectAnswers" optional="YES" attributeType="Transformable"/>
-        <attribute name="question" optional="YES" attributeType="String"/>
-        <attribute name="results" optional="YES" attributeType="Transformable"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-    </entity>
 </model>

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A017460D2C0BCBE000DF8D09 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017460C2C0BCBE000DF8D09 /* Answer.swift */; };
+		A01746102C0BD2EF00DF8D09 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A017460F2C0BD2EF00DF8D09 /* CoreDataStack.swift */; };
+		A01746122C0BD7C200DF8D09 /* TriviaEntityNSmanaged.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01746112C0BD7C200DF8D09 /* TriviaEntityNSmanaged.swift */; };
+		A01746142C0BDAA700DF8D09 /* TriviaCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01746132C0BDAA700DF8D09 /* TriviaCRUD.swift */; };
 		A01D18102BA35838008B7BC0 /* Preview Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D180F2BA35838008B7BC0 /* Preview Content.swift */; };
 		A0399C232BF0263C00A04551 /* TriviaManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0399C222BF0263C00A04551 /* TriviaManagerTests.swift */; };
 		A03E4A4A2BDEF61F00C369B3 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03E4A492BDEF61F00C369B3 /* Repository.swift */; };
@@ -18,7 +22,7 @@
 		A068F97A2BA2594000E14730 /* GlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A068F9792BA2594000E14730 /* GlowView.swift */; };
 		A06C448F2B91189400D03691 /* TriviaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06C448E2B91189400D03691 /* TriviaManager.swift */; };
 		A082D9642BFB89BA00CDEA18 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A082D9632BFB89BA00CDEA18 /* LocalDataSource.swift */; };
-		A092B3AE2AB4E20E0053086F /* TriviaGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092B3AD2AB4E20E0053086F /* TriviaGameApp.swift */; };
+		A092B3AE2AB4E20E0053086F /* BrainyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092B3AD2AB4E20E0053086F /* BrainyApp.swift */; };
 		A092B3B02AB4E20E0053086F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A092B3AF2AB4E20E0053086F /* ContentView.swift */; };
 		A092B3B22AB4E2110053086F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A092B3B12AB4E2110053086F /* Assets.xcassets */; };
 		A092B3B52AB4E2110053086F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A092B3B42AB4E2110053086F /* Preview Assets.xcassets */; };
@@ -59,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A017460C2C0BCBE000DF8D09 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		A017460F2C0BD2EF00DF8D09 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		A01746112C0BD7C200DF8D09 /* TriviaEntityNSmanaged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaEntityNSmanaged.swift; sourceTree = "<group>"; };
+		A01746132C0BDAA700DF8D09 /* TriviaCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaCRUD.swift; sourceTree = "<group>"; };
 		A01D180F2BA35838008B7BC0 /* Preview Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Content.swift"; sourceTree = "<group>"; };
 		A0399C192BF0252300A04551 /* BrainyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0399C222BF0263C00A04551 /* TriviaManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaManagerTests.swift; sourceTree = "<group>"; };
@@ -72,7 +80,7 @@
 		A06C448E2B91189400D03691 /* TriviaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaManager.swift; sourceTree = "<group>"; };
 		A082D9632BFB89BA00CDEA18 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		A092B3AA2AB4E20E0053086F /* Brainy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brainy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A092B3AD2AB4E20E0053086F /* TriviaGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaGameApp.swift; sourceTree = "<group>"; };
+		A092B3AD2AB4E20E0053086F /* BrainyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainyApp.swift; sourceTree = "<group>"; };
 		A092B3AF2AB4E20E0053086F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A092B3B12AB4E2110053086F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A092B3B42AB4E2110053086F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -121,6 +129,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A017460E2C0BD25300DF8D09 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				A09D51B32BE4307200C35425 /* brainyModel.xcdatamodeld */,
+				A017460F2C0BD2EF00DF8D09 /* CoreDataStack.swift */,
+				A01746112C0BD7C200DF8D09 /* TriviaEntityNSmanaged.swift */,
+				A01746132C0BDAA700DF8D09 /* TriviaCRUD.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		A0399C1A2BF0252300A04551 /* BrainyTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,12 +185,12 @@
 				A0A55F612B8BF00300F9D10F /* Models */,
 				A092B3BE2AB4E90E0053086F /* Views */,
 				A092B3BB2AB4E6020053086F /* Component */,
-				A092B3AD2AB4E20E0053086F /* TriviaGameApp.swift */,
+				A092B3AD2AB4E20E0053086F /* BrainyApp.swift */,
 				A092B3B12AB4E2110053086F /* Assets.xcassets */,
 				A092B3B32AB4E2110053086F /* Preview Content */,
 				A092B3BF2AB4ED930053086F /* Extensions.swift */,
 				A09C576B2BCD5335000E0CD5 /* Managers */,
-				A09D51B32BE4307200C35425 /* brainyModel.xcdatamodeld */,
+				A017460E2C0BD25300DF8D09 /* CoreData */,
 			);
 			path = Brainy;
 			sourceTree = "<group>";
@@ -246,6 +265,7 @@
 			children = (
 				A0A0009C2B8E7F080008C2CD /* Trivia.swift */,
 				A04929112C039C13002D6DD5 /* Question.swift */,
+				A017460C2C0BCBE000DF8D09 /* Answer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +411,7 @@
 				A04E73242AC4A4860014ED0D /* QuestionView.swift in Sources */,
 				A082D9642BFB89BA00CDEA18 /* LocalDataSource.swift in Sources */,
 				A0A0009B2B8E7C800008C2CD /* TriviaView.swift in Sources */,
+				A017460D2C0BCBE000DF8D09 /* Answer.swift in Sources */,
 				A0A0009D2B8E7F080008C2CD /* Trivia.swift in Sources */,
 				A092B3BD2AB4E63E0053086F /* PrimaryButton.swift in Sources */,
 				A06C448F2B91189400D03691 /* TriviaManager.swift in Sources */,
@@ -409,12 +430,15 @@
 				A04929122C039C13002D6DD5 /* Question.swift in Sources */,
 				A04929102C039645002D6DD5 /* TriviaRepository.swift in Sources */,
 				A09C576D2BCD5368000E0CD5 /* TriviaManagerMediumLevel.swift in Sources */,
-				A092B3AE2AB4E20E0053086F /* TriviaGameApp.swift in Sources */,
+				A01746142C0BDAA700DF8D09 /* TriviaCRUD.swift in Sources */,
+				A092B3AE2AB4E20E0053086F /* BrainyApp.swift in Sources */,
 				A09C57792BCD7E7F000E0CD5 /* MediumAnswerRow.swift in Sources */,
 				A04E73262AC4A6F00014ED0D /* ProgressBar.swift in Sources */,
 				A03E4A4A2BDEF61F00C369B3 /* Repository.swift in Sources */,
+				A01746122C0BD7C200DF8D09 /* TriviaEntityNSmanaged.swift in Sources */,
 				A092B3C02AB4ED930053086F /* Extensions.swift in Sources */,
 				A09C577B2BCD7FD6000E0CD5 /* HardAnswerRow.swift in Sources */,
+				A01746102C0BD2EF00DF8D09 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,8 +782,7 @@
 				A09D51B42BE4307200C35425 /* brainyModel.xcdatamodel */,
 			);
 			currentVersion = A09D51B42BE4307200C35425 /* brainyModel.xcdatamodel */;
-			name = brainyModel.xcdatamodeld;
-			path = /Users/evam/Desktop/Brainy/Brainy/brainyModel.xcdatamodeld;
+			path = brainyModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

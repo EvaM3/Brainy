@@ -33,6 +33,10 @@ class LocalDataSource: DataSource {
         // This method can be used to fetch a single Trivia item if needed
         return nil
     }
+    
+    func saveAll(_ triviaList: [Trivia]) async throws {
+           // Implementation for saving a list of trivia items to the local source
+       }
 }
 
 

@@ -9,10 +9,13 @@ import SwiftUI
 
 
 protocol Repository {
-
-        func getAll() -> [Trivia]
-        func get() -> Trivia
-        
+        func getAll() async throws -> [Trivia]
+        func get() async throws -> Trivia
+    
 }
+
+
+//func getAll() -> [Trivia]
+//func get() -> Trivia
 
 

@@ -32,7 +32,7 @@ struct QuestionView: View {
                     .foregroundColor(.gray)
                 
                 
-                ForEach(triviaManager.answerChoices, id: \.id) {
+                ForEach($triviaManager.answerChoices, id: \.id) {
                     answer in
                     AnswerRow(answer: answer)
                         .environmentObject(triviaManager)

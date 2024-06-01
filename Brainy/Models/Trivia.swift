@@ -7,9 +7,10 @@
 
 
 import Foundation
-
+import CoreData
 
 struct Trivia: Decodable, Identifiable {
+    
     var id: String = UUID().uuidString
     var category: String
     var type: String
@@ -37,7 +38,31 @@ struct Trivia: Decodable, Identifiable {
         
         
     }
+}
+
+extension Trivia {
+    // Initialize Trivia from a managed object
+    init(from entity: TriviaEntity) {
+        id = entity.id ?? UUID().uuidString
+        category = entity.category ?? ""
+        type = entity.type ?? ""
+        difficulty = entity.difficulty ?? ""
+        question = entity.question ?? ""
+        correctAnswer = entity.correctAnswer ?? ""
+        incorrectAnswers = entity.incorrectAnswers ?? []
+    }
     
-    
+    // Creating a managed object from the Trivia struct
+    func toEntity(context: NSManagedObjectContext) -> TriviaEntity {
+        let entity = TriviaEntity(context: context)
+        entity.id = id
+        entity.category = category
+        entity.type = type
+        entity.difficulty = difficulty
+        entity.question = question
+        entity.correctAnswer = correctAnswer
+        entity.incorrectAnswers = incorrectAnswers
+        return entity
+    }
     
 }

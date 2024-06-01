@@ -20,11 +20,14 @@ class TriviaManager: ObservableObject {
     @Published private(set) var progress: CGFloat = 0.00
     @Published private(set) var score = 0
     
+    
     init() {
         Task.init {
             await fetchTrivia()
         }
     }
+
+
     // , https://opentdb.com/api.php?amount=10
     // https://opentdb.com/api.php?amount=10&category=26
     func fetchTrivia() async {

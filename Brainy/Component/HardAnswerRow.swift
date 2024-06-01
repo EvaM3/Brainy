@@ -40,7 +40,7 @@ struct HardAnswerRow: View {
         .onTapGesture {
             if !triviaHardManager.answerSelected {
                 isSelected = true
-                triviaHardManager.selectAnswer(answer: answer)
+                $triviaHardManager.selectAnswer(answer: answer)
 
             }
         }

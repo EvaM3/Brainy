@@ -8,6 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @Environment(\.managedObjectContext) private var viewContext
+       @FetchRequest(
+           sortDescriptors: [NSSortDescriptor(keyPath: \TriviaEntity.question, ascending: true)],
+           animation: .default)
+       private var triviaEntities: FetchedResults<TriviaEntity>
+       
+       private var triviaItems: [Trivia] {
+           triviaEntities.map { Trivia(from: $0) }
+       }
     
     @StateObject var triviaManager = TriviaManager()
     @StateObject var triviaMediumLevel = TriviaManagerMediumLevel()
