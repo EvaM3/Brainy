@@ -7,7 +7,7 @@
 
 
 import Foundation
-import CoreData
+
 
 struct Trivia: Decodable, Identifiable {
     
@@ -18,6 +18,7 @@ struct Trivia: Decodable, Identifiable {
     var question: String
     var correctAnswer: String
     var incorrectAnswers: [String]
+    
     
     var formattedQuestion: AttributedString {
         do {
@@ -38,31 +39,31 @@ struct Trivia: Decodable, Identifiable {
         
         
     }
+    
+    func mapToCached(trivia: Trivia) -> CachedTrivia {
+        let cachedTrivia = CachedTrivia()
+   //   cachedTrivia.id = trivia.id
+        cachedTrivia.category = trivia.category
+        cachedTrivia.correctAnswer = trivia.correctAnswer
+        cachedTrivia.difficulty = trivia.difficulty
+     // cachedTrivia.incorrectAnswers = trivia.incorrectAnswers
+        cachedTrivia.type = trivia.type
+      
+        
+        return cachedTrivia
+    }
 }
 
-extension Trivia {
-    // Initialize Trivia from a managed object
-    init(from entity: TriviaEntity) {
-        id = entity.id ?? UUID().uuidString
-        category = entity.category ?? ""
-        type = entity.type ?? ""
-        difficulty = entity.difficulty ?? ""
-        question = entity.question ?? ""
-        correctAnswer = entity.correctAnswer ?? ""
-        incorrectAnswers = entity.incorrectAnswers ?? []
-    }
-    
-    // Creating a managed object from the Trivia struct
-    func toEntity(context: NSManagedObjectContext) -> TriviaEntity {
-        let entity = TriviaEntity(context: context)
-        entity.id = id
-        entity.category = category
-        entity.type = type
-        entity.difficulty = difficulty
-        entity.question = question
-        entity.correctAnswer = correctAnswer
-        entity.incorrectAnswers = incorrectAnswers
-        return entity
-    }
-    
-}
+//
+//extension Trivia { map to cached or map to ui
+//    // Initialize from a managed object
+//    init(from entity: TriviaEntity) {
+//        id = entity.id ?? UUID().uuidString
+//        category = entity.category ?? ""
+//        type = entity.type ?? ""
+//        difficulty = entity.difficulty ?? ""
+//        question = entity.question ?? ""
+//        correctAnswer = entity.correctAnswer ?? ""
+//        incorrectAnswers = entity.incorrectAnswers ?? []
+//    }
+

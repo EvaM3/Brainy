@@ -5,4 +5,13 @@
         <attribute name="isCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="CachedTrivia" representedClassName="CachedTrivia" syncable="YES">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="correctAnswer" optional="YES" attributeType="String"/>
+        <attribute name="difficulty" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="incorrectAnswers" optional="YES" attributeType="Transformable"/>
+        <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+    </entity>
 </model>

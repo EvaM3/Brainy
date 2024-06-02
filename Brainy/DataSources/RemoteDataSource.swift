@@ -9,10 +9,7 @@ import SwiftUI
 
 
 class RemoteDataSource: DataSource {
-    
-    func get() async throws -> Trivia? {
-        //
-    }
+   
     
     private let apiURL = "https://opentdb.com/api.php?amount=10"
 

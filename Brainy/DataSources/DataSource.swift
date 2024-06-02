@@ -18,7 +18,7 @@ import Foundation
 
   protocol DataSource {
       
-      func get() async throws -> Trivia?
+      func get(byId id: String) async throws -> Trivia?
       func getAll() async throws -> [Trivia]
       
  }

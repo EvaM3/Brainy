@@ -10,7 +10,7 @@ import CoreData
 
 func saveTrivia(trivia: Trivia) {
     let context = PersistenceController.shared.container.viewContext
-    let savedTrivia = trivia.toEntity(context: context)
+    // let savedTrivia = trivia.toEntity(context: context)
     
     do {
         try context.save()
