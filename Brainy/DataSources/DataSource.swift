@@ -3,18 +3,18 @@
 //  Brainy
 //
 
-//
 
 import Foundation
 
 /*
+         Hi Prateek!
  
- Hi Prateek!
+ Please have a look at the LocalDataSource (saving and extracting task for this week)  and tell me what you think.
+  
+ Question: I should have separate functions in each class (remote, etc.) using the mapper, right? (Considering the separation of concerns in class mappers.)
  
- Worked on the Core Data. Have a few questions on the TriviaManager removal, what you talked about. See you later.
- 
+      Have a great day!
  */
-
 
   protocol DataSource {
       
