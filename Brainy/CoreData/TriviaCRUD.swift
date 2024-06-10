@@ -8,6 +8,8 @@ import Foundation
 import CoreData
 
 
+let context = PersistenceController.shared.container.viewContext
+
 func saveTrivia(trivia: Trivia) {
     let context = PersistenceController.shared.container.viewContext
     // let savedTrivia = trivia.toEntity(context: context)
