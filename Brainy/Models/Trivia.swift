@@ -7,7 +7,7 @@
 
 
 import Foundation
-
+import CoreData
 
 struct Trivia: Decodable, Identifiable {
     
@@ -19,7 +19,7 @@ struct Trivia: Decodable, Identifiable {
     var correctAnswer: String
     var incorrectAnswers: [String]
     
-    
+  
     var formattedQuestion: AttributedString {
         do {
             return try AttributedString(markdown: question)
@@ -30,7 +30,7 @@ struct Trivia: Decodable, Identifiable {
     }
     
     var answers: [String] {
-        // Cleaned it from the do-catch block
+        
        var allAnswers = incorrectAnswers
         allAnswers.append(correctAnswer)
         
@@ -42,7 +42,7 @@ struct Trivia: Decodable, Identifiable {
     
     func mapToCached(trivia: Trivia) -> CachedTrivia {
         let cachedTrivia = CachedTrivia()
-   //   cachedTrivia.id = trivia.id
+        cachedTrivia.id = UUID(uuidString: trivia.id)
         cachedTrivia.category = trivia.category
         cachedTrivia.correctAnswer = trivia.correctAnswer
         cachedTrivia.difficulty = trivia.difficulty
@@ -52,18 +52,20 @@ struct Trivia: Decodable, Identifiable {
         
         return cachedTrivia
     }
+    
 }
 
-//
-//extension Trivia { map to cached or map to ui
-//    // Initialize from a managed object
-//    init(from entity: TriviaEntity) {
-//        id = entity.id ?? UUID().uuidString
-//        category = entity.category ?? ""
-//        type = entity.type ?? ""
-//        difficulty = entity.difficulty ?? ""
-//        question = entity.question ?? ""
-//        correctAnswer = entity.correctAnswer ?? ""
-//        incorrectAnswers = entity.incorrectAnswers ?? []
-//    }
 
+
+
+//func mapToCachedFromContext(context: NSManagedObjectContext) -> CachedTrivia {
+//           let cachedTrivia = CachedTrivia(context: context)
+//           cachedTrivia.id = UUID(uuidString: self.id)
+//           cachedTrivia.category = self.category
+//           cachedTrivia.correctAnswer = self.correctAnswer
+//           cachedTrivia.difficulty = self.difficulty
+//           cachedTrivia.question = self.question
+//           cachedTrivia.incorrectAnswers = self.incorrectAnswers as NSObject
+//           cachedTrivia.type = self.type
+//           return cachedTrivia
+//       }

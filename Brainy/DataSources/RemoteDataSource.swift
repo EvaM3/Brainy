@@ -46,7 +46,7 @@ class RemoteDataSource: DataSource {
     }
     func mapToCached(trivia: Trivia) -> CachedTrivia {
         let cachedTrivia = CachedTrivia(context: context)
-        //  cachedTrivia.id = trivia.id
+        cachedTrivia.id = UUID(uuidString: trivia.id)
         cachedTrivia.category = trivia.category
         cachedTrivia.type = trivia.type
         cachedTrivia.difficulty = trivia.difficulty

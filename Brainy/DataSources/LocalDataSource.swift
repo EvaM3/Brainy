@@ -5,21 +5,32 @@
 //
 
 import Foundation
+import CoreData
 
-
+// Core data implementation  get all and save
 class LocalDataSource: DataSource {
     
     private var triviaItems: [Trivia] = []
     private var cachedTriviaItems: [CachedTrivia] = []
+    private let context: NSManagedObjectContext
     
-    // Fetch all trivia items
+    init(context: NSManagedObjectContext) {
+        self.context = context
+    }
+    
+    // Fetch all trivia items froom Core Data
     func getAll() async throws -> [Trivia] {
-        return triviaItems
+        let request: NSFetchRequest<CachedTrivia> = CachedTrivia.fetchRequest()
+        let cachedTriviaItems = try context.fetch(request)
+        return cachedTriviaItems.map { mapFromCached(cachedTrivia: $0) }
     }
     
     // Fetch a trivia item by its ID
     func get(byId id: String) async throws -> Trivia? {
-        return triviaItems.first { $0.id == id }
+        let request: NSFetchRequest<CachedTrivia> = CachedTrivia.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id)
+        let cachedTriviaItems = try context.fetch(request)
+        return cachedTriviaItems.first.map { mapFromCached(cachedTrivia: $0) }
     }
     
     // Add trivia items to the local data source for testing purposes (when the time comes :-) )
@@ -37,22 +48,29 @@ class LocalDataSource: DataSource {
     
     // Save all trivia items
     func saveAll(_ triviaList: [Trivia]) async throws {
-        let cachedTriviaList = triviaList.map { mapToCached(trivia: $0) }
-        cachedTriviaItems.append(contentsOf: cachedTriviaList)
-        triviaItems.append(contentsOf: triviaList)
+        do {
+            for trivia in triviaList {
+                let _ = try mapToCached(trivia: trivia)
+            }
+            try context.save()
+        } catch {
+            context.rollback()
+            throw error
+        }
     }
     
     
     // Fetch all cached trivia items
     func fetchAllCached() async throws -> [CachedTrivia] {
-        return cachedTriviaItems
+        let request: NSFetchRequest<CachedTrivia> = CachedTrivia.fetchRequest()
+        return try context.fetch(request)
     }
     
     
     // Function to map Trivia to CachedTrivia in Local DataSource
     private func mapToCached(trivia: Trivia) -> CachedTrivia {
         let cachedTrivia = CachedTrivia()
-        // cachedTrivia.id = trivia.id
+        cachedTrivia.id = UUID(uuidString: trivia.id)
         cachedTrivia.category = trivia.category
         cachedTrivia.correctAnswer = trivia.correctAnswer
         cachedTrivia.difficulty = trivia.difficulty
@@ -63,7 +81,7 @@ class LocalDataSource: DataSource {
     
     
     // Convert CachedTrivia to Trivia
-    private func mapToTrivia(cachedTrivia: CachedTrivia) -> Trivia {
+    private func mapFromCached(cachedTrivia: CachedTrivia) -> Trivia {
         return Trivia(
             // id: cachedTrivia.id ?? UUID(),
             category: cachedTrivia.category ?? "",
