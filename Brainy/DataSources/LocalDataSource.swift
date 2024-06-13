@@ -7,7 +7,6 @@
 import Foundation
 import CoreData
 
-// Core data implementation  get all and save
 class LocalDataSource: DataSource {
     
     private var triviaItems: [Trivia] = []
@@ -18,7 +17,7 @@ class LocalDataSource: DataSource {
         self.context = context
     }
     
-    // Fetch all trivia items froom Core Data
+    // Fetch all trivia items from Core Data
     func getAll() async throws -> [Trivia] {
         let request: NSFetchRequest<CachedTrivia> = CachedTrivia.fetchRequest()
         let cachedTriviaItems = try context.fetch(request)
@@ -46,19 +45,20 @@ class LocalDataSource: DataSource {
     }
     
     
-    // Save all trivia items
+    // Save all trivia items to Core Data
     func saveAll(_ triviaList: [Trivia]) async throws {
+        for trivia in triviaList {
+            let _ = mapToCached(trivia: trivia)
+        }
+        
         do {
-            for trivia in triviaList {
-                let _ = try mapToCached(trivia: trivia)
-            }
             try context.save()
         } catch {
             context.rollback()
             throw error
         }
     }
-    
+
     
     // Fetch all cached trivia items
     func fetchAllCached() async throws -> [CachedTrivia] {
